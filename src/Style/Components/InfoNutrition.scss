@@ -1,0 +1,58 @@
+.infoNutrition{
+
+    max-width: 258px;
+    padding: 30px;
+    background-color: #FBFBFB;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-left: 30px;
+
+    &__logoNutrition{
+
+        border-radius: 5px;
+        padding: 30px;
+
+        img{
+            opacity: 1;
+            width: 20px;
+            color: #FF0000;
+        }
+    }
+
+    &__infos{
+
+        margin: auto;
+        margin-left: 15px;
+        width: 100%;
+
+        h4{
+            font-size: 20px;
+            margin: 0;
+
+        }
+
+        p{
+            font-size: 14px;
+            color: #6d6d6d;
+            margin: 0;
+        }
+    }
+}
+
+
+.infoNutrition__logoNutrition.Calories{
+    background-color: #FBEAEA;
+}
+
+.infoNutrition__logoNutrition.Protéines{       
+    background: #E9F4FB;
+}
+
+.infoNutrition__logoNutrition.Glucides{
+    background: #FAF6E5;
+}
+
+.infoNutrition__logoNutrition.Lipides{
+    background: #FBEAEF;
+}

@@ -1,0 +1,117 @@
+.home{
+
+    main{
+        padding-top: 150px;
+        padding-right: 80px;
+        padding-bottom: 30px;
+        padding-left: 200px;
+        height: 80vh;
+
+        display: flex;
+        justify-content: space-between;
+
+        .lesGraphiques{
+            width: 70%;
+            padding: 20px;
+            display: flex;
+            flex-flow: column;
+
+            .graphBougie{
+                height: 400px;
+                padding-top: 10px;
+                border-radius: 10px;
+                background: #FBFBFB;
+                display: flex;
+                align-items: flex-end;
+            }
+
+            .troisGraph{
+                min-height: 263px;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                margin-top: 25px;
+            }
+        }
+
+        .infoNutritionList{
+            width: 30%;
+
+            ul{
+                height: 100%;
+                list-style: none;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    header {
+        background-color: #020203;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
+
+        h1{
+            color: #fff;
+        }
+
+        img{
+            max-width: 178px;
+            padding-left: 20px;
+        }
+
+        nav{
+            width: 70%;
+            margin: auto;
+
+            ul{
+                display: flex;
+                justify-content: space-around;
+                list-style: none;
+    
+                li a{
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 24px;
+                }
+    
+            }
+        } 
+    }
+
+    aside{
+        background-color: #020203;
+        height: 100vh;
+        width: 117px;
+        position: fixed;
+        left: 0;
+
+        ul{
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+
+            li{
+                padding: 10px 0;
+            }
+        }
+
+        p{
+            color: #fff;
+            margin-bottom: 300px;
+            position: absolute;
+            left: 32px;
+            bottom: -250px;
+            writing-mode: vertical-rl;
+            font-size: 12px;
+        }
+    }
+}
