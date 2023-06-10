@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class SportsData {
+class SportsDataAPI {
   constructor() {
     this.test = this.callGeneral();
     this.userId = 12;
@@ -88,4 +88,4 @@ class SportsData {
   };
 }
 
-export default SportsData;
+export default SportsDataAPI;

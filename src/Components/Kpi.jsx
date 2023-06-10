@@ -17,7 +17,7 @@ const Kpi = ({ leScore }) => {
     { name: "Score", value: 1 - leScore, fill: "#ff0000" },
   ];
 
-  console.log("LA DATA :", data);
+  //console.log("LA DATA :", data);
 
   const COLORS = ["#FF0000", "transparent"];
 

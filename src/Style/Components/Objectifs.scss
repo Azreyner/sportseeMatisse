@@ -1,6 +1,18 @@
-.objectifs{
-    background-color: #FF0000;
+.boxObjectif {
+  min-width: 258px;
+
+  &__titre {
+  }
+
+  &__objectifs {
     max-width: 258px;
     min-width: 258px;
     max-height: 263px;
+  }
+}
+
+.svgGradient {
+  position: absolute;
+  left: -9999em;
+  opacity: 0;
 }

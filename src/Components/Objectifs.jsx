@@ -13,43 +13,21 @@ import {
 import "../Style/Components/Objectifs.scss";
 
 const Objectifs = ({ lesDonnéesAVGSession }) => {
-  /*const data = [
-    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-    { name: "Page B", uv: 600, pv: 6400, amt: 6400 },
-    { name: "Page C", uv: 300, pv: 1400, amt: 1400 },
-    { name: "Page D", uv: 300, pv: 4400, amt: 4400 },
-  ];*/
-
   const data = lesDonnéesAVGSession;
+
+  const days = {
+    1: "L",
+    2: "M",
+    3: "M",
+    4: "J",
+    5: "V",
+    6: "S",
+    7: "D",
+  };
 
   const renderCustomAxisTick = ({ x, y, payload }) => {
     let tick = "";
-
-    switch (payload.value) {
-      case 1:
-        tick = "L";
-        break;
-      case 2:
-        tick = "M";
-        break;
-      case 3:
-        tick = "M";
-        break;
-      case 4:
-        tick = "J";
-        break;
-      case 5:
-        tick = "V";
-        break;
-      case 6:
-        tick = "S";
-        break;
-      case 7:
-        tick = "D";
-        break;
-      default:
-        tick = "";
-    }
+    tick = days[payload.value];
 
     return (
       <g transform={`translate(${x},${y})`}>
@@ -72,28 +50,79 @@ const Objectifs = ({ lesDonnéesAVGSession }) => {
     return null;
   }
 
+  const [coord, setCoord] = useState("100%");
+  const CHART_PADDING_IN_PX = 10;
+
+  const OnMouseMove = (hoverData) => {
+    console.log(hoverData);
+    if (hoverData.activeCoordinate) {
+      setCoord(hoverData.activeCoordinate.x + CHART_PADDING_IN_PX + "px");
+    }
+  };
+
+  // GRADIENT DEFINIT
+  const style = `
+  #rect1 { fill: url(#Gradient1); }
+  .stop1 { stop-color: red; }
+  .stop2 { stop-color: white; }`;
+
   return (
-    <ResponsiveContainer className="objectifs" width="99%" height="99%">
-      <LineChart
-        width={258}
-        height={263}
-        data={data}
-        text="Durée moyenne des sessions"
+    <div
+      className="boxObjectif"
+      style={{
+        padding: CHART_PADDING_IN_PX + "px",
+        background: `linear-gradient(90deg, #FF0000 0%, #FF0000 ${coord}, #E60000 ${coord})`,
+      }}
+    >
+      <svg
+        width="120"
+        height="240"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        className="svgGradient"
       >
-        <Tooltip
-          content={<CustomTooltip />}
-          wrapperStyle={{ outline: "none" }}
-          position={{ y: 0 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="sessionLength"
-          stroke="#fff"
-          dot={false}
-          activeDot={{ r: 8 }}
-          strokeWidth={3}
-        />
-        <XAxis
+        <defs>
+          <linearGradient id="Gradient1">
+            <stop className="stop1" offset="0%" />
+            <stop className="stop2" offset="40%" />
+          </linearGradient>
+          <style>{style}</style>
+        </defs>
+      </svg>
+      <h2 className="boxObjectif__titre">Titre</h2>
+      <ResponsiveContainer
+        className="boxObjectif__objectifs"
+        width="99%"
+        height="99%"
+      >
+        <LineChart
+          width={258}
+          height={263}
+          data={data}
+          text="Durée moyenne des sessions"
+          onMouseMove={OnMouseMove}
+        >
+          <Tooltip
+            content={<CustomTooltip />}
+            wrapperStyle={{ outline: "none" }}
+            position={{ y: 0 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="sessionLength"
+            isAnimationActive={false}
+            stroke="url(#Gradient1)"
+            dot={false}
+            activeDot={{ r: 8 }}
+            strokeWidth={3}
+          />
+          <XAxis
+            dataKey="day"
+            tick={renderCustomAxisTick}
+            axisLine={false}
+            tickLine={false}
+          />
+          {/* <XAxis
           dataKey="day"
           tick={renderCustomAxisTick}
           axisLine={false}
@@ -101,17 +130,18 @@ const Objectifs = ({ lesDonnéesAVGSession }) => {
           mirror={false}
           tickMargin={10}
           minTickGap={10}
-        />
-        <ReferenceArea
-          x1={150}
-          x2={180}
-          y1={200}
-          y2={300}
-          stroke="black"
-          strokeOpacity={0.3}
-        />
-      </LineChart>
-    </ResponsiveContainer>
+        /> */}
+          <ReferenceArea
+            x1={150}
+            x2={180}
+            y1={200}
+            y2={300}
+            stroke="black"
+            strokeOpacity={0.3}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

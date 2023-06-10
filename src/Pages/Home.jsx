@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import logo from "../Assets/SportSeeLogo.png";
-import SportsData from "../SportsData.js";
+import SportsData from "../SportsDataMock.js";
 import BoutonAside from "../Components/BoutonAside";
 import InfoNutrition from "../Components/InfoNutrition";
 import Objectifs from "../Components/Objectifs";
@@ -15,10 +15,15 @@ import Velo from "../Assets/NavAside/Velo.svg";
 import Muscu from "../Assets/NavAside/Muscu.svg";
 
 import { ResponsiveContainer } from "recharts";
+import { ThemeContext } from "../utils/context";
 
 function Home() {
-  const donees = new SportsData();
 
+  //const source = new SportsData();
+
+  const { source } = useContext(ThemeContext)
+  
+  //console.log("LES DONNEES CONTEXT", source)
   const [keyData, setKeyData] = useState({});
   const [todayScore, setTodayScore] = useState();
   const [avgSessionData, setAvgSessionData] = useState({});
@@ -36,23 +41,14 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await donees.callGeneral();
+      const result = await source.callGeneral();
       setKeyData(result.data.keyData);
       setTodayScore(result.data.todayScore);
-      console.log(result);
+      const result2 = await source.callAvgSession();
+      setAvgSessionData(result2.data.sessions);
     }
     fetchData();
   }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      const result = await donees.callAvgSession();
-      setAvgSessionData(result.data.sessions);
-    }
-    fetchData();
-  }, []);
-
-  //console.log(new SportsData().getTest());
 
   return (
     <div className="home">
