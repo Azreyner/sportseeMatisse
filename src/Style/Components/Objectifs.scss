@@ -1,0 +1,36 @@
+.boxObjectif {
+  min-width: 258px;
+  position: relative;
+  min-height: 200px;
+  border-radius: 5px;
+
+  &__titre {
+    position: absolute;
+    font-size: 15px;
+    color: #fff;
+    opacity: 0.4;
+    max-width: 140px;
+    left: 20px;
+    top: 8px;
+  }
+
+  &__objectifs {
+    max-width: 258px;
+    min-width: 258px;
+    max-height: 263px;
+  }
+}
+
+.svgGradient {
+  position: absolute;
+  left: -9999em;
+  opacity: 0;
+}
+
+@media (max-width: 1453px) {
+  .boxObjectif {
+    min-width: 170px;
+    width: 170px;
+    height: 200px;
+  }
+}
