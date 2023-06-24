@@ -11,8 +11,6 @@ const InfoNutrition = ({ nomKeyData, valeur, leType }) => {
   const unitéLabel =
     nomKeyData === "calorieCount" ? `${valeur} kCal` : `${valeur} g`;
 
-  //console.log("TESTETSTSDTETSTES  " + leType);
-
   useEffect(() => {
     switch (leType) {
       case "Calories":

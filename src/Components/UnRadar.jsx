@@ -11,8 +11,6 @@ import {
 import "../Style/Components/Radar.scss";
 
 const UnRadar = ({ performanceData }) => {
-  console.log("performance : " + JSON.stringify(performanceData.data.data));
-
   const data = [
     {
       subject: performanceData.data.kind[1],
@@ -39,35 +37,6 @@ const UnRadar = ({ performanceData }) => {
       A: performanceData.data.data[5].value,
     },
   ];
-
-  /*const data = [
-    {
-      subject: performanceData.data.kind[1],
-      A: performanceData.data.data[0].value,
-    },
-    {
-      subject: performanceData.data.kind[2],
-      A: performanceData.data.data[1].value,
-    },
-    {
-      subject: performanceData.data.kind[3],
-      A: performanceData.data.data[2].value,
-    },
-    {
-      subject: performanceData.data.kind[4],
-      A: performanceData.data.data[3].value,
-    },
-    {
-      subject: performanceData.data.kind[5],
-      A: performanceData.data.data[4].value,
-    },
-    {
-      subject: performanceData.data.kind[6],
-      A: performanceData.data.data[5].value,
-    },
-  ];*/
-
-  //console.log(performanceData.data.kind);
 
   return (
     <ResponsiveContainer className="radar" width="100%" height="99%">

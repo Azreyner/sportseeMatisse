@@ -13,9 +13,7 @@ import {
 import "../Style/Components/Poids.scss";
 
 const Poids = ({ lePoids }) => {
-  //console.log(lePoids);
-
-  const poidsMax = 0;
+  let poidsMax = 0;
 
   function trierPoidsMinMax(data) {
     poidsMax = data[0].kilogram;
@@ -44,7 +42,6 @@ const Poids = ({ lePoids }) => {
 
   const renderLegend = (props) => {
     const { payload } = props;
-    //console.log("PAYLOAD :", payload);
 
     return (
       <div className="lesLegendes">

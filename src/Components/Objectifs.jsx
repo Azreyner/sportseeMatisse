@@ -54,7 +54,6 @@ const Objectifs = ({ lesDonnéesAVGSession }) => {
   const CHART_PADDING_IN_PX = 10;
 
   const OnMouseMove = (hoverData) => {
-    console.log(hoverData);
     if (hoverData.activeCoordinate) {
       setCoord(hoverData.activeCoordinate.x + CHART_PADDING_IN_PX + "px");
     }
